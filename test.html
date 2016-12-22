@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daan's Test Thing</title>
+</head>
+<body>
+
+<script src="libs/jquery.js"></script>
+
+<script src="libs/p5.min.js"></script>
+<script src="libs/p5.dom.min.js"></script>
+<script src="libs/p5.sound.min.js"></script>
+
+<script src="libs/dga.js"></script>
+
+<script>
+    function setup() {
+        createCanvas(1920, 1080);
+        stroke(250, 100, 50);
+        background("gray");
+        randomSeed();
+        noLoop()
+    }
+
+    function draw() {
+        setInterval(function () {
+            fill('rgba(0,0,0, 0.10)');
+            rect(0, 0, 1920, 1080);
+            colorMode(HSL, 100);
+            generate_fractal_tree_recursive(random_int(500, 1920-500), 1070, 270, random_int(4, 14), {terminate_branch_chance: 0, size: 6, colour_base: 180 + random_int(-30, 30)});
+        }, 100);
+        //generate_fractal_tree_recursive(1920/4, 1070, 270, 12, {terminate_branch_chance: 0, size: 6});
+        //generate_fractal_tree_recursive(1920/4 * 3, 1070, 270, 14, {terminate_branch_chance: 0, size: 6});
+    }
+</script>
+</body>
+</html>
